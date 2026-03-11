@@ -70,8 +70,6 @@ def ingest_documents(
     )
 
     if reset:
-        # On Windows, deleting the whole DB directory can fail if sqlite is locked.
-        # Recreating the collection is safer for "rebuild index" flows in Streamlit.
         try:
             if hasattr(vectorstore, "delete_collection"):
                 vectorstore.delete_collection()
